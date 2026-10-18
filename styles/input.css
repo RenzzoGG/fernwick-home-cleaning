@@ -1,0 +1,84 @@
+/*
+  Entrada de Tailwind CSS v4 (configuración "CSS-first", sin tailwind.config.js).
+  La CLI lee este archivo, escanea las fuentes declaradas con @source y genera
+  solo el CSS de las clases que encuentra. Salida: public/projects/cleaning-landing/css/styles.css
+*/
+
+/* source(none) desactiva la autodetección: escaneamos solo lo que declaramos abajo */
+@import "tailwindcss" source(none);
+
+@source "../index.html";
+@source "../js";
+
+/* Tokens de diseño: cada variable genera utilidades (bg-brand-700, text-ink-600, font-display…) */
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
+
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+
+  --color-sky-50: #f0f9ff;
+  --color-sky-100: #e0f2fe;
+  --color-sky-200: #bae6fd;
+  --color-sky-700: #0369a1;
+
+  --color-ink-50: #f8fafc;
+  --color-ink-100: #f1f5f9;
+  --color-ink-200: #e2e8f0;
+  --color-ink-300: #cbd5e1;
+  --color-ink-500: #64748b;
+  --color-ink-600: #475569;
+  --color-ink-700: #334155;
+  --color-ink-900: #0f172a;
+
+  --color-sun-400: #fbbf24;
+  --color-danger-600: #c81e1e;
+  --color-danger-50: #fef2f2;
+
+  --animate-fade-up: fade-up 0.6s ease-out both;
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem; /* evita que el navbar fijo tape los títulos al navegar por anclas */
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html { scroll-behavior: smooth; }
+  }
+
+  body {
+    @apply bg-white font-sans text-ink-700 antialiased;
+  }
+
+  /* Foco visible consistente en todo lo interactivo */
+  :focus-visible {
+    @apply outline-3 outline-offset-2 outline-brand-700;
+  }
+
+  summary { cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+}
+
+/*
+  Animación de entrada: main.js añade .is-visible cuando el elemento entra en pantalla.
+  Solo se oculta si el usuario NO pidió reducir movimiento y si JS está activo (.js en <html>).
+*/
+@layer components {
+  @media (prefers-reduced-motion: no-preference) {
+    .js [data-reveal]:not(.is-visible) { opacity: 0; }
+    .js [data-reveal].is-visible { animation: var(--animate-fade-up); }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "cleaning-landing",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Fernwick Home Cleaning — concept landing page built with Tailwind CSS",
+  "type": "module",
+  "scripts": {
+    "copy": "node scripts/copy-static.mjs",
+    "dev": "node scripts/copy-static.mjs --watch & tailwindcss -i styles/input.css -o ../../public/projects/cleaning-landing/css/styles.css --watch",
+    "build": "node scripts/copy-static.mjs --clean && tailwindcss -i styles/input.css -o ../../public/projects/cleaning-landing/css/styles.css --minify"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "4.3.3",
+    "tailwindcss": "4.3.3"
+  }
+}
