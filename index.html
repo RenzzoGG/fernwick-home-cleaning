@@ -69,7 +69,7 @@
       <div class="pointer-events-none absolute -top-24 -right-24 -z-10 size-80 rounded-full bg-brand-200/60 blur-3xl" aria-hidden="true"></div>
       <div class="pointer-events-none absolute -bottom-32 -left-20 -z-10 size-96 rounded-full bg-sky-200/60 blur-3xl" aria-hidden="true"></div>
 
-      <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-2">
+      <div class="mx-auto grid max-w-6xl items-center gap-12 px-4 py-16 sm:px-6 md:py-24 lg:grid-cols-[1.2fr_1fr]">
         <div data-reveal>
           <p class="inline-flex items-center gap-2 rounded-full bg-white/80 px-3 py-1 text-sm font-semibold text-brand-800 ring-1 ring-brand-200">
             <span class="size-2 rounded-full bg-brand-600" aria-hidden="true"></span>
@@ -93,16 +93,17 @@
             </a>
           </div>
 
-          <ul class="mt-10 grid gap-3 text-sm font-medium text-ink-700 sm:grid-cols-3" aria-label="Why customers trust us">
-            <li class="flex items-center gap-2">
+          <!-- flex + nowrap: cada indicador queda en una línea. Entre lg y 72rem (columna angosta) se apilan; desde 72rem vuelven a fila -->
+          <ul class="mt-10 flex flex-col gap-3 text-sm font-medium text-ink-700 sm:flex-row sm:flex-wrap sm:gap-x-6 lg:flex-col min-[72rem]:flex-row" aria-label="Why customers trust us">
+            <li class="flex items-center gap-2 whitespace-nowrap">
               <svg class="size-5 shrink-0 text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg>
               Insured &amp; bonded
             </li>
-            <li class="flex items-center gap-2">
+            <li class="flex items-center gap-2 whitespace-nowrap">
               <svg class="size-5 shrink-0 text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
               Eco-friendly products
             </li>
-            <li class="flex items-center gap-2">
+            <li class="flex items-center gap-2 whitespace-nowrap">
               <svg class="size-5 shrink-0 text-brand-700" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="10"/><path d="m8 12 3 3 5-6"/></svg>
               Satisfaction guarantee
             </li>
