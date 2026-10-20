@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "copy": "node scripts/copy-static.mjs",
-    "dev": "node scripts/copy-static.mjs --watch & tailwindcss -i styles/input.css -o ../../public/projects/cleaning-landing/css/styles.css --watch",
-    "build": "node scripts/copy-static.mjs --clean && tailwindcss -i styles/input.css -o ../../public/projects/cleaning-landing/css/styles.css --minify"
+    "dev": "node scripts/copy-static.mjs --watch & tailwindcss -i styles/input.css -o dist/css/styles.css --watch",
+    "build": "node scripts/copy-static.mjs --clean && tailwindcss -i styles/input.css -o dist/css/styles.css --minify"
   },
   "devDependencies": {
     "@tailwindcss/cli": "4.3.3",

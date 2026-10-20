@@ -1,7 +1,7 @@
 /*
   Entrada de Tailwind CSS v4 (configuración "CSS-first", sin tailwind.config.js).
   La CLI lee este archivo, escanea las fuentes declaradas con @source y genera
-  solo el CSS de las clases que encuentra. Salida: public/projects/cleaning-landing/css/styles.css
+  solo el CSS de las clases que encuentra. Salida: dist/css/styles.css
 */
 
 /* source(none) desactiva la autodetección: escaneamos solo lo que declaramos abajo */

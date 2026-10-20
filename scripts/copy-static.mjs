@@ -1,5 +1,5 @@
-// Copia los archivos estáticos (HTML, JS y assets) de src/cleaning-landing/
-// a public/projects/cleaning-landing/. El CSS lo genera la CLI de Tailwind.
+// Copia los archivos estáticos (HTML, JS y assets) de la raíz del repo
+// a dist/. El CSS lo genera la CLI de Tailwind.
 //   node scripts/copy-static.mjs           → copia una vez
 //   node scripts/copy-static.mjs --clean   → borra la carpeta de salida y copia
 //   node scripts/copy-static.mjs --watch   → copia y vuelve a copiar al guardar cambios
@@ -8,7 +8,7 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
-const outDir = resolve(root, "../../public/projects/cleaning-landing");
+const outDir = resolve(root, "dist");
 const entries = ["index.html", "js", "assets"];
 
 function copyAll() {

@@ -1,0 +1,17 @@
+# Archivos del sistema operativo
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# Editor
+.vscode/
+
+# Dependencias
+node_modules/
+
+# Resultado del build (lo genera `npm run build`; Railway lo regenera en cada despliegue)
+dist/
+
+# Logs
+*.log
+npm-debug.log*
