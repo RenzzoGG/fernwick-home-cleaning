@@ -1,5 +1,12 @@
 # Fernwick Home Cleaning
 
+![Desktop view of the Fernwick hero section: the headline "A spotless home, without lifting a finger.", quote buttons, trust indicators and a house illustration](docs/screenshots/desktop-hero.webp)
+
+<p>
+  <img src="docs/screenshots/desktop-pricing.webp" width="68%" alt="Desktop view of the pricing section with three plans: Essential at $129, Biweekly at $109 marked as most popular, and Deep Reset at $249">
+  <img src="docs/screenshots/mobile-hero.webp" width="28%" alt="Mobile view of the hero section with the menu button, the headline and full-width quote buttons">
+</p>
+
 Fernwick Home Cleaning is a **fictional concept business**: a residential cleaning service. This repository contains its marketing landing page, built with HTML, Tailwind CSS and a little vanilla JavaScript.
 
 **Live demo:** [fernwick.renzzogg.com](https://fernwick.renzzogg.com)
