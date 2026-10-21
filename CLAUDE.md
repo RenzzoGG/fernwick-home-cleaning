@@ -42,6 +42,13 @@ CLAUDE.md
 - Antes de cada commit que toque la landing, correr `npm run build` para comprobar que compila (el resultado no se commitea).
 - La configuración de Tailwind v4 está en `styles/input.css` (`@theme`, `@source`); no hay `tailwind.config.js`. No construir nombres de clase concatenando strings en JS: el escáner no los detecta.
 
+## Cache busting (`?v=`)
+
+- En `index.html`, el CSS y el JS se enlazan con un número de versión: `css/styles.css?v=N` y `js/main.js?v=N`. Al cambiar el número, el navegador lo trata como un archivo nuevo y no usa la copia vieja de su caché.
+- **Regla:** sube el `?v=` de un archivo **una vez por publicación** (push a `main`) **solo si ese archivo cambió**. Si en la misma publicación hay varios commits que lo tocan, se sube una sola vez.
+- El CSS cambia también cuando se usan clases de Tailwind nuevas o distintas en `index.html` o `js/`, aunque no se toque `styles/input.css`; en ese caso también se sube su `?v=`.
+- Cada archivo lleva su propio contador: si solo cambia el JS, solo se sube `js/main.js?v=`.
+
 ## Forma de trabajo
 
 - Soy estudiante de Ingeniería de Software y quiero aprender: **explica las decisiones importantes antes de implementarlas** (qué opciones hay, cuál recomiendas y por qué).
