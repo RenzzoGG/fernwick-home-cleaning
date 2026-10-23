@@ -15,7 +15,7 @@ Fernwick Home Cleaning is a **fictional concept business**: a residential cleani
 
 - Hero section with calls to action and trust indicators.
 - Services, "Book in three simple steps", pricing, reviews and FAQ sections.
-- Free quote form with client-side validation in JavaScript. Submission is **simulated**: no data is sent anywhere.
+- Free quote form with client-side validation in JavaScript. It sends the request to the [Fernwick API](#the-quote-form-and-the-api) with `fetch`, and the quotes show up in the admin panel.
 - Responsive layout with an accessible mobile menu (closes with Escape) and scroll reveal animations.
 - Custom design tokens (brand colors and fonts) defined with Tailwind's `@theme`.
 
@@ -53,10 +53,24 @@ npm run build   # clean dist/ and create a production build (minified CSS)
 To view the site, serve `dist/` with any static server in another terminal, for example:
 
 ```bash
-python3 -m http.server 8000 -d dist
+python3 -m http.server 8080 -d dist
 ```
 
-Then open <http://localhost:8000>.
+Then open <http://localhost:8080>. (Port 8000 is left free for the API.)
+
+## The quote form and the API
+
+The form posts JSON to `POST /v1/public/quotes` of the Fernwick API (separate `fernwick-platform` repo). The API URL is chosen in `js/main.js` from the page's hostname:
+
+| Page opened at | API used |
+| --- | --- |
+| `localhost` / `127.0.0.1` | `http://localhost:8000` |
+| anything else | `https://fernwick-api.renzzogg.com` |
+
+- The API only answers browsers whose origin is listed in its `CORS_ORIGINS`. For local development it must include `http://localhost:8080`.
+- Field names follow the API: the form's `size` and `date` are sent as `home_size` and `preferred_date`.
+- A hidden `website` field works as a honeypot against bots.
+- Validation errors (422) are shown next to each field; too many requests (429), request too large (413), network errors and timeouts show a message with the phone and email as an alternative. The form keeps its data.
 
 ## Deployment
 

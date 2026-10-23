@@ -17,7 +17,7 @@ Reglas de trabajo para este repositorio.
 
 ```
 index.html               # Landing (fuente)
-js/main.js               # Menú móvil, animaciones al hacer scroll, validación del formulario (envío simulado)
+js/main.js               # Menú móvil, animaciones al hacer scroll, validación y envío del formulario a la API
 assets/favicon.svg
 styles/input.css         # Entrada de Tailwind v4 (@theme, @source)
 scripts/copy-static.mjs  # Copia index.html, js/ y assets/ a dist/
@@ -37,10 +37,17 @@ CLAUDE.md
 
 - Comandos, desde la raíz del repo:
   - `npm ci` — instala exactamente lo de `package-lock.json` (primera vez o tras clonar).
-  - `npm run dev` — copia HTML/JS/assets a `dist/` y regenera el CSS al guardar. Ver en otra terminal con `python3 -m http.server 8000 -d dist` → `http://localhost:8000`.
+  - `npm run dev` — copia HTML/JS/assets a `dist/` y regenera el CSS al guardar. Ver en otra terminal con `python3 -m http.server 8080 -d dist` → `http://localhost:8080` (el puerto 8000 es de la API).
   - `npm run build` — limpia `dist/`, copia los estáticos y genera `dist/css/styles.css` minificado.
 - Antes de cada commit que toque la landing, correr `npm run build` para comprobar que compila (el resultado no se commitea).
 - La configuración de Tailwind v4 está en `styles/input.css` (`@theme`, `@source`); no hay `tailwind.config.js`. No construir nombres de clase concatenando strings en JS: el escáner no los detecta.
+
+## Conexión con la API
+
+- El formulario envía `POST /v1/public/quotes` a la API de `fernwick-platform` (ver su `docs/DESIGN.md`).
+- `API_URL` se decide en `js/main.js` según `location.hostname`: en `localhost`/`127.0.0.1` → `http://localhost:8000`; en cualquier otro → `https://fernwick-api.renzzogg.com`. No leer la URL de la query string.
+- El origen de la landing debe estar en `CORS_ORIGINS` de la API (en desarrollo, `http://localhost:8080`).
+- La API usa `home_size` y `preferred_date`; el HTML conserva `size` y `date` y `buildPayload()` los traduce. `website` es el honeypot.
 
 ## Cache busting (`?v=`)
 
